@@ -21,8 +21,8 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useContactForm } from '@/hooks/useContactForm';
 import { PartnershipType } from '@/types';
+import { submitContactForm } from '@/actions/formActions';
 
 interface ContactFormProps {
   open: boolean;
@@ -58,7 +58,9 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
-  const { isSubmitting, error: submitError, success: submitted, submitForm } = useContactForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   // Handle text input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -133,20 +135,36 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
     e.preventDefault();
     
     if (validateForm()) {
+      setIsSubmitting(true);
+      setSubmitError(null);
+      
       // Map form data to the API format
       const partnershipType: PartnershipType = 
         formData.tipo === 'empresa' ? 'partnership' :
         formData.tipo === 'miembro' ? 'consultation' : 'information';
       
-      // Submit the form data to the API
-      await submitForm({
-        name: formData.nombre,
-        email: formData.email,
-        phone: formData.telefono,
-        type: partnershipType,
-        company: formData.empresa,
-        sector: formData.sector
-      });
+      try {
+        // Use server action to submit form
+        const result = await submitContactForm({
+          name: formData.nombre,
+          email: formData.email,
+          phone: formData.telefono,
+          type: partnershipType,
+          company: formData.empresa,
+          sector: formData.sector
+        });
+        
+        if (result.success) {
+          setSubmitted(true);
+        } else {
+          setSubmitError(result.message);
+        }
+      } catch (error) {
+        setSubmitError('An unexpected error occurred');
+        console.error('Error submitting form:', error);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
