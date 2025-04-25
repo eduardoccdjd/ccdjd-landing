@@ -27,20 +27,6 @@ const boardMembers = [
     title: 'Consultor Tecnológico',
     description: 'Fundador de tres startups exitosas y asesor de transformación digital para empresas tradicionales que buscan modernizar sus operaciones.',
     image: '/images/boardMembers.png'
-  },
-  {
-    id: 4,
-    name: 'Ana Gómez',
-    title: 'Estratega de Operaciones',
-    description: 'Especializada en optimización de procesos y cadenas de suministro para empresas manufactureras y de servicios en América Latina.',
-    image: '/images/boardMembers.png'
-  },
-  {
-    id: 5,
-    name: 'Diego Herrera',
-    title: 'Experto en Expansión Internacional',
-    description: 'Ha liderado la entrada de múltiples empresas colombianas a mercados internacionales, con enfoque en Estados Unidos y Europa.',
-    image: '/images/boardMembers.png'
   }
 ];
 

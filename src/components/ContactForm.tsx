@@ -21,6 +21,8 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { useContactForm } from '@/hooks/useContactForm';
+import { PartnershipType } from '@/types';
 
 interface ContactFormProps {
   open: boolean;
@@ -56,9 +58,7 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  const { isSubmitting, error: submitError, success: submitted, submitForm } = useContactForm();
 
   // Handle text input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -131,36 +131,22 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitError(null);
     
     if (validateForm()) {
-      try {
-        setIsSubmitting(true);
-        
-        // Create payload with form data
-        const payload = {
-          name: formData.nombre,
-          email: formData.email,
-          phone: formData.telefono,
-          type: formData.tipo,
-          company: formData.empresa,
-          sector: formData.sector
-        };
-
-        // Log form data instead of sending to API
-        console.log('Form submitted:', payload);
-        
-        // Simulate successful submission
-        setTimeout(() => {
-          setSubmitted(true);
-          setIsSubmitting(false);
-        }, 500);
-        
-      } catch (error) {
-        console.error('Error with form submission:', error);
-        setSubmitError('Error processing the form. Please try again.');
-        setIsSubmitting(false);
-      }
+      // Map form data to the API format
+      const partnershipType: PartnershipType = 
+        formData.tipo === 'empresa' ? 'partnership' :
+        formData.tipo === 'miembro' ? 'consultation' : 'information';
+      
+      // Submit the form data to the API
+      await submitForm({
+        name: formData.nombre,
+        email: formData.email,
+        phone: formData.telefono,
+        type: partnershipType,
+        company: formData.empresa,
+        sector: formData.sector
+      });
     }
   };
 
@@ -176,7 +162,6 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
         sector: '',
       });
       setErrors({});
-      setSubmitted(false);
     }
     onClose();
   };
@@ -298,6 +283,7 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
                 {errors.tipo && <FormHelperText>{errors.tipo}</FormHelperText>}
               </FormControl>
               
+              {/* Show company and sector fields only when tipo is empresa */}
               {formData.tipo === 'empresa' && (
                 <>
                   <TextField
@@ -312,9 +298,9 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
                     error={!!errors.empresa}
                     helperText={errors.empresa}
                   />
-                  <FormControl 
-                    fullWidth 
-                    margin="normal" 
+                  <FormControl
+                    fullWidth
+                    margin="normal"
                     required
                     error={!!errors.sector}
                   >
@@ -323,15 +309,16 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
                       labelId="sector-label"
                       id="sector"
                       name="sector"
-                      value={formData.sector || ''}
+                      value={formData.sector}
                       label="Sector"
                       onChange={handleSelectChange}
                     >
                       <MenuItem value="tecnologia">Tecnología</MenuItem>
-                      <MenuItem value="retail">Comercio / Retail</MenuItem>
-                      <MenuItem value="servicios">Servicios profesionales</MenuItem>
+                      <MenuItem value="servicios">Servicios</MenuItem>
+                      <MenuItem value="retail">Retail</MenuItem>
                       <MenuItem value="manufactura">Manufactura</MenuItem>
-                      <MenuItem value="alimentos">Alimentos y bebidas</MenuItem>
+                      <MenuItem value="salud">Salud</MenuItem>
+                      <MenuItem value="educacion">Educación</MenuItem>
                       <MenuItem value="otro">Otro</MenuItem>
                     </Select>
                     {errors.sector && <FormHelperText>{errors.sector}</FormHelperText>}

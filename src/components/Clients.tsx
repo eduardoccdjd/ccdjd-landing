@@ -24,18 +24,6 @@ const clients = [
     name: 'Santo Marketing',
     description: 'Santo Marketing S.A.S: Establecida en 2012 en Bogotá, es una agencia de publicidad que ofrece estrategias de marketing BTL, publicidad y branding para potenciar marcas en Colombia.',
     image: '/images/santo.jpeg'
-  },
-  {
-    id: 4,
-    name: 'EcoAlimentos',
-    description: 'Productora de alimentos orgánicos que logró certificaciones internacionales y acceso a nuevos mercados.',
-    image: '/images/boardMembers.png'
-  },
-  {
-    id: 5,
-    name: 'Logística Integrada',
-    description: 'Empresa de logística que implementó tecnología de punta para el seguimiento de envíos en tiempo real.',
-    image: '/images/boardMembers.png'
   }
 ];
 
