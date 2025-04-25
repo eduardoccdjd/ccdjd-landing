@@ -241,7 +241,7 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
       ) : (
         <form onSubmit={handleSubmit}>
           <DialogTitle sx={{ pb: 1, pt: 3, color: '#fff' }}>
-            <Typography variant="h5" component="h2" fontWeight={600}>
+            <Typography variant="h5" component="div" fontWeight={600}>
               Comienza tu proceso
             </Typography>
           </DialogTitle>
@@ -249,7 +249,7 @@ export default function ContactForm({ open, onClose }: ContactFormProps) {
             <Typography variant="body2" color="#aaa" sx={{ mb: 2 }}>
               Completa el formulario para comenzar a impulsar el crecimiento de tu empresa o para unirte como miembro experto de juntas directivas.
             </Typography>
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <Box component="div" sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
