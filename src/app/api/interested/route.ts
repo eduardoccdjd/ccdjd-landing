@@ -18,12 +18,6 @@ export async function POST(request: NextRequest) {
     const apiUrl = process.env.API_URL;
     const apiKey = process.env.API_KEY;
 
-    // For development, mock successful response if API_URL is not configured
-    if (!apiUrl && process.env.NODE_ENV === 'development') {
-      console.log('Using mock response (API_URL not configured)');
-      return NextResponse.json({ message: 'Form submitted successfully' });
-    }
-
     if (!apiUrl) {
       return NextResponse.json(
         { message: 'API not configured' },
@@ -32,7 +26,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Forward to external API
-    const response = await fetch(`${apiUrl}/contact`, {
+    const response = await fetch(`${apiUrl}/interested`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

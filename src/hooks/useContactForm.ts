@@ -14,7 +14,7 @@ export function useContactForm() {
     setSuccess(false);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/interested', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
