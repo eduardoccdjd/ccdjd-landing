@@ -44,6 +44,15 @@ export default function Hero() {
               </Typography>
             </Box>
           </Grid>
+          <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Box sx={{ width: '100%', maxWidth: 480, ml: { md: 4 }, mt: { xs: 4, md: 0 } }}>
+              <img 
+                src="/images/board.png" 
+                alt="Junta directiva de PyMEs Colombianas" 
+                style={{ width: '100%', height: 'auto', borderRadius: 16, boxShadow: '0 8px 32px rgba(0,0,0,0.25)' }}
+              />
+            </Box>
+          </Grid>
         </Grid>
       </Container>
 

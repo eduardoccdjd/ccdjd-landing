@@ -21,7 +21,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ContactForm from './ContactForm';
 
 const navItems = [
-  { name: 'Características', href: '#features' }
+  { name: 'Nuestro Proceso', href: '#features' }
 ];
 
 export default function Header() {

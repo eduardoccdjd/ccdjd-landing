@@ -24,6 +24,18 @@ const clients = [
     name: 'Santo Marketing',
     description: 'Santo Marketing S.A.S: Establecida en 2012 en Bogotá, es una agencia de publicidad que ofrece estrategias de marketing BTL, publicidad y branding para potenciar marcas en Colombia.',
     image: '/images/santo.jpeg'
+  },
+  {
+    id: 4,
+    name: 'Proxet',
+    description: 'Proxet es una empresa de desarrollo de software que ofrece soluciones tecnológicas personalizadas, especializada en salud, fintech y análisis de datos.',
+    image: '/images/proxet.png'
+  },
+  {
+    id: 5,
+    name: 'Whisker',
+    description: 'Whisker es una empresa estadounidense especializada en tecnología para mascotas, reconocida por su producto estrella, el Litter-Robot, una caja de arena automática y autolimpiante para gatos. Fundada en 1999 por Brad Baxter, Whisker ha vendido más de un millón de unidades y continúa innovando en el cuidado inteligente de mascotas.',
+    image: '/images/whisker.png'
   }
 ];
 
