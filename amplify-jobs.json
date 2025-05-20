@@ -1,0 +1,23 @@
+{
+    "jobSummaries": [
+        {
+            "jobArn": "arn:aws:amplify:us-east-1:188475209435:apps/dukwkswbj4uuc/branches/main/jobs/0000000002",
+            "jobId": "2",
+            "commitId": "0ac94e88fc0a3c60d9acbdcce415d8c49f70ddf1",
+            "commitMessage": "feat: add clients and board members",
+            "commitTime": "2025-05-20T17:10:36-05:00",
+            "startTime": "2025-05-20T17:38:14.079000-05:00",
+            "status": "SUCCEED",
+            "endTime": "2025-05-20T17:41:28.479000-05:00"
+        },
+        {
+            "jobArn": "arn:aws:amplify:us-east-1:188475209435:apps/dukwkswbj4uuc/branches/main/jobs/0000000001",
+            "jobId": "1",
+            "commitId": "HEAD",
+            "commitTime": "2025-05-20T17:05:21.672000-05:00",
+            "startTime": "2025-05-20T17:05:21.949000-05:00",
+            "status": "SUCCEED",
+            "endTime": "2025-05-20T17:08:07.488000-05:00"
+        }
+    ]
+}

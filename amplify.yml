@@ -6,6 +6,7 @@ frontend:
         - npm ci
     build:
       commands:
+        - env | grep -e API_URL -e API_KEY >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next

@@ -1,0 +1,24 @@
+{
+    "branches": [
+        {
+            "branchArn": "arn:aws:amplify:us-east-1:188475209435:apps/dukwkswbj4uuc/branches/main",
+            "branchName": "main",
+            "tags": {},
+            "stage": "PRODUCTION",
+            "displayName": "main",
+            "enableNotification": false,
+            "createTime": "2025-05-20T17:05:21.107000-05:00",
+            "updateTime": "2025-05-20T17:41:28.545000-05:00",
+            "environmentVariables": {},
+            "enableAutoBuild": true,
+            "framework": "Next.js - SSR",
+            "activeJobId": "0000000002",
+            "totalNumberOfJobs": "0",
+            "enableBasicAuth": false,
+            "enablePerformanceMode": false,
+            "ttl": "5",
+            "enablePullRequestPreview": false,
+            "backend": {}
+        }
+    ]
+}

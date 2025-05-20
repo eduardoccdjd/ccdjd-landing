@@ -1,0 +1,43 @@
+{
+    "apps": [
+        {
+            "appId": "dukwkswbj4uuc",
+            "appArn": "arn:aws:amplify:us-east-1:188475209435:apps/dukwkswbj4uuc",
+            "name": "ccdjd-landing",
+            "tags": {},
+            "repository": "https://github.com/eduardoccdjd/ccdjd-landing",
+            "platform": "WEB_COMPUTE",
+            "createTime": "2025-05-20T17:05:20.532000-05:00",
+            "updateTime": "2025-05-20T17:39:47.069000-05:00",
+            "iamServiceRoleArn": "arn:aws:iam::188475209435:role/service-role/AmplifySSRLoggingRole-13723099-1618-480c-82aa-1f915b8b80c0",
+            "environmentVariables": {
+                "API_KEY": "RdVHnvZYdQaqIUXHbeTET4CTq7gluxD72T1ietYs",
+                "API_URL": "https://heiztxm09c.execute-api.us-east-1.amazonaws.com/dev/"
+            },
+            "defaultDomain": "dukwkswbj4uuc.amplifyapp.com",
+            "enableBranchAutoBuild": false,
+            "enableBranchAutoDeletion": false,
+            "enableBasicAuth": false,
+            "customRules": [
+                {
+                    "source": "/<*>",
+                    "target": "/index.html",
+                    "status": "404-200"
+                }
+            ],
+            "productionBranch": {
+                "lastDeployTime": "2025-05-20T17:41:28.479000-05:00",
+                "status": "SUCCEED",
+                "branchName": "main"
+            },
+            "buildSpec": "version: 1\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm ci\n    build:\n      commands:\n        - npm run build\n  artifacts:\n    baseDirectory: .next\n    files:\n      - '**/*'\n  cache:\n    paths:\n      - node_modules/**/*\n      - .next/cache/**/* ",
+            "customHeaders": "",
+            "enableAutoBranchCreation": false,
+            "repositoryCloneMethod": "TOKEN",
+            "cacheConfig": {
+                "type": "AMPLIFY_MANAGED_NO_COOKIES"
+            },
+            "webhookCreateTime": "2025-05-20T17:05:20.316000-05:00"
+        }
+    ]
+}
